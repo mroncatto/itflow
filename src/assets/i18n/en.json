@@ -1,0 +1,138 @@
+{
+    "login": {
+        "about": "Information technology service management",
+        "forgetPwd": "Forgot password? Recover Password",
+        "placeholder.username": "Your username",
+        "placeholder.password": "Your password"
+    },
+    "profile":{
+        "profile": "Profile",
+        "joinDate": "Join Date: ",
+        "lastLogin": "Last Login: ",
+        "userInfo": "User info",
+        "editProfile": "Edit Profile",
+        "fullname": "Full Name: ",
+        "username": "Username: ",
+        "email": "Email:",
+        "cancel": "Cancel",
+        "updateInfo": "Update Info",
+        "saveProfile": "Save Profile",
+        "updatePassword": "Update Password",
+        "oldPassword": "Old Password: ",
+        "oldPasswordHolder": "Type your current password, minimum 6 characters",
+        "password": "Password: ",
+        "passwordHolder": "Type your new password, minimum 6 characters",
+        "repeatPassword": "Repeat password: ",
+        "repeatPasswordHolder": "Repeat your new password",
+        "changePassword": "Change Password"
+    },
+    "menu": {
+        "noNotification": "No notification",
+        "profile": " Profile",
+        "logout": " Logout",
+        "dashboard": "Dashboard",
+        "Helpdesk": "Helpdesk",
+        "Assets": "Assets",
+        "Entities": "Entities",
+        "Records": "Records",
+        "Manage": "Manage",
+        "Interface": "Interface",
+        "Hardware": "Hardware",
+        "Categories": "Categories",
+        "Companies": "Companies",
+        "Branches": "Branches",
+        "Departments": "Departments",
+        "usersAccount": "Users Account",
+        "darkMode": "Dark Mode"
+    },
+    "users": {
+        "users": "Users",
+        "user": "User",
+        "fullname": "Full Name",
+        "username": "Username",
+        "email": "Email",
+        "lastLogin": "Last Login",
+        "state": "State",
+        "locked": "Locked",
+        "resetPassword": "Reset Password",
+        "lock": "Lock",
+        "unlock": "Unlock"
+    },
+    "api": {
+        "error": {
+            "undefined": "Internal Server Error",
+            "unknown": "Internal Server Error",
+            "UNAUTHORIZED": "Unauthorized",
+            "FORBIDDEN": "Forbidden",
+            "INVALID PASSWORD": "Invalid Password",
+            "BAD CREDENTIALS": "Bad Credentials",
+            "UNSUCCESSFUL AUTHENTICATION": "Unsuccessful Authentication",
+            "METHOD NOT ALLOWED": "Method not allowed"
+        },
+        "warning": {
+            "NOT_FOUND": "Not Found",
+            "USER NOT FOUND": "User not found",
+            "BAD_REQUEST": "Bad Request",
+            "ALL FIELDS ARE REQUIRED": "All fields are required",
+            "INVALID FORMAT EMAIL": "Invalid Email Format"
+        }
+    },
+    "app": {
+        "warning": {
+            "sessionExpired": "Session expired",
+            "loginRequired": "Please login again"
+        },
+        "success": {
+            "created": "Successfully created",
+            "updated": "Successfully changed",
+            "deleted": "Successfully deleted"
+        },
+        "info": {
+            "welcome": "Welcome",
+            "authenticated": "Successfully Authenticated",
+            "passwordChanged": "Password was changed",
+            "profileChanged": "Profile was changed",
+            "userDisabled":"The user account was disabled!",
+            "successfully": "Successfully",
+            "created": "Successfully created",
+            "updated": "Successfully changed",
+            "deleted": "Successfully deleted",
+            "disabled": "Successfully disabled",
+            "userBlocked": "The account has been locked",
+            "userUnBlocked":"The account has been unlocked",
+            "passwordReseted": "A new password has been generated and sent to the user's mail."
+        }
+    },
+    "forms": {
+        "passwordMatch": "Passwords do not match",
+        "pattern": "Invalid Pattern",
+        "email": "You must provide a valid email",
+        "required": "This field is required",
+        "minlength": "Minimum {{n}} characters required",
+        "maxlength": "Maximum {{n}} characters allowed",
+        "min": "Minimum allowed value is {{n}}",
+        "max": "Maximum allowed value is {{n}}",
+        "invalidField": "Invalid field"
+    },
+    "commons":{
+        "open": "Open",
+        "edit": "Edit",
+        "delete": "Delete",
+        "active": "Active",
+        "inactive": "Inactive",
+        "disable":"Disable",
+        "cancel": "Cancel",
+        "yes": "Yes",
+        "no": "No",
+        "actions": "Actions"
+    },
+    "modal": {
+        "warning": "Warning",
+        "disable": "Are you sure you want to disable it? This change cannot be reversed.",
+        "user": {
+            "disable": "Are you sure you want to disable the {{user}} user account?? This change cannot be reversed.",
+            "lock": "Are you sure you want to lock the {{user}} account?",
+            "resetPassword": "Are you sure you want to set the user's password?"
+        }
+    }
+}

@@ -1,0 +1,60 @@
+main {
+    background: #282a36;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container-fluid {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  .card {
+    width: 450px;
+    height: 500px;
+    background: #343746;
+    border: none;
+    border-radius: 10px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  .card .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .info p {
+    color: #6271a2;
+    font-size: 1.5rem;
+    width: 380px;
+    text-align: center;
+    font-weight: bold;
+    text-shadow: 5px 10px 15px #343746;
+  }
+  .form input {
+    width: 340px;
+  }
+  .form span {
+    color: #343746;
+  }
+  .button button {
+    width: 380px;
+    font-weight: bold;
+  }
+  .help p {
+    color: #2794b5;
+  }
+  .help p:hover {
+    color: #6271a2;
+  }
+  
