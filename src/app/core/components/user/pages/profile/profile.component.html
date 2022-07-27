@@ -117,19 +117,19 @@
                                         <div class="mb-2">
                                             <label for="oldPassword" translate="profile.oldPassword"></label>
                                             <input [type]="showPassword?'text':'password'" formControlName="oldPassword" id="oldPassword" class="form-control"
-                                            placeholder="{{'profile.oldPasswordHolder' | translate}}">
+                                            placeholder="{{'profile.oldPassword.placeholder' | translate}}">
                                             <app-validation-field [form]="passwordForm" [field]="'oldPassword'"></app-validation-field>
                                         </div>
                                         <div class="mb-2">
                                             <label for="newPassword" translate="profile.password"></label>
                                             <input [type]="showPassword?'text':'password'" formControlName="newPassword" id="newPassword" class="form-control"
-                                            placeholder="{{'profile.passwordHolder' | translate}}">
+                                            placeholder="{{'profile.password.placeholder' | translate}}">
                                             <app-validation-field [form]="passwordForm" [field]="'newPassword'"></app-validation-field>
                                         </div>
                                         <div class="mb-2">
                                             <label for="repeatpassword" translate="profile.repeatPassword"></label>
                                             <input [type]="showPassword?'text':'password'" formControlName="repeatpassword" id="repeatpassword" class="form-control bg-danger"
-                                            placeholder="{{'profile.repeatPasswordHolder' | translate}}">
+                                            placeholder="{{'profile.repeatPassword.placeholder' | translate}}">
                                             <app-validation-field [form]="passwordForm" [field]="'repeatpassword'"></app-validation-field>
                                         </div>
                                         <div class="mb-1">

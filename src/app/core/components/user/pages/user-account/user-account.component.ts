@@ -3,7 +3,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { EMPTY, Subscription, switchMap, take } from 'rxjs';
 import { ModalService } from 'src/app/core/shared/services/modal/modal.service';
-import { IUser } from '../../model/user';
+import { IUser, User } from '../../model/user';
 import { UserService } from '../../services/user.service';
 
 @Component({
@@ -15,7 +15,9 @@ export class UserAccountComponent implements OnInit, OnDestroy {
   private sub: Subscription[] = [];
   users: IUser[] = [];
   errorResponse!: HttpErrorResponse;
-  bsModalRef!: BsModalRef;
+  selectedUser: IUser | null = null;
+  confirmModal!: BsModalRef;
+  createUserModal!: BsModalRef;
 
   constructor(
     private userService: UserService,
@@ -30,6 +32,10 @@ export class UserAccountComponent implements OnInit, OnDestroy {
     this.sub.forEach(sub => sub.unsubscribe());
   }
 
+  isYourAccount(user: IUser): boolean {
+    return this.userService.getCurrentUser()?.username == user.username;
+  }
+
   private loadUsers(): void {
     this.userService.getUsers().subscribe({
       next: (data) => this.users = data,
@@ -40,6 +46,44 @@ export class UserAccountComponent implements OnInit, OnDestroy {
     })
   }
 
+  // ============================= CREATE USER ============================
+  onCreateUser(): void {
+    this.sub.push(
+      this.userService.onCreateUser()
+        .asObservable()
+        .pipe(
+          take(1),
+          switchMap(async (user) => user ? this.users.push(user) : EMPTY)
+        )
+        .subscribe({
+          error: (err) => this.userService.onFail(err)
+        })
+    )
+  }
+
+  // ============================= UPDATE USER ============================
+  onUpdateUser(user: IUser): void {
+    this.sub.push(
+      this.userService.onUpdateUser(user)
+        .asObservable()
+        .pipe(
+          take(1),
+          switchMap(async (user) => user ? this.afterUpdateUser(user) : EMPTY)
+        )
+        .subscribe({
+          error: (err) => this.userService.onFail(err)
+        })
+    )
+  }
+
+  private afterUpdateUser(user: IUser): void {
+    this.users.forEach(u => {
+      if (u.username === user.username) u = user
+    });
+  }
+
+
+  // ========================== RESET USER PASSWORD ==========================
   onResetPassword(user: IUser): void {
     this.sub.push(
       this.modalService.showConfirm('warning', 'user.resetPassword', user.fullName)
@@ -57,7 +101,6 @@ export class UserAccountComponent implements OnInit, OnDestroy {
   private resetUserPassword(user: IUser): void {
 
   }
-
 
   // ============================= LOCKUNLOCK USER ============================
   beforeLockUnLockUser(user: IUser): void {

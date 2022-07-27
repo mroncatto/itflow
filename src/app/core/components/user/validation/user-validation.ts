@@ -10,6 +10,10 @@ export class UserValidation extends AbstractValidation {
     static password(): Validators[]{
         return [Validators.required, Validators.minLength(6)];
     }
+
+    static username(): Validators[]{
+        return [Validators.required, Validators.minLength(6), Validators.pattern("[a-zA-Z]*")];
+    }
     
     static required(): Validators[]{
         return [Validators.required];

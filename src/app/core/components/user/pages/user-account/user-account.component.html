@@ -26,7 +26,7 @@
                             <span translate="users.users"></span>
                         </div>
                         <div>
-                            <button class="btn btn-success text-white">
+                            <button (click)="onCreateUser()" class="btn btn-success text-white">
                                 <i class="fas fa-user"></i>&nbsp;<span>New</span>
                             </button>
                         </div>
@@ -63,42 +63,44 @@
                                             translate="commons.yes"></span>
                                     </td>
                                     <td>
-                                        <i title="{{'commons.actions' | translate}}" class="fas fa-chevron-circle-down link"
+                                        <i title="{{'commons.actions' | translate}}" class="fas fa-chevron-circle-down"
                                             [id]="u.username" data-bs-toggle="dropdown"></i>
                                         <ul class="dropdown-menu dropdown-menu-end">
-                                            <li><a class="dropdown-item">
+                                            <li><a class="dropdown-item link-spin">
                                                     <i class="fas fa-eye"></i>&nbsp;
                                                     <span class="text-muted" translate="commons.open"></span>
                                                 </a>
                                             </li>
-                                            <li *ngIf="u.active"><a class="dropdown-item">
+                                            <li *ngIf="u.active && !isYourAccount(u)" class="link-spin">
+                                                <a (click)="onUpdateUser(u)" class="dropdown-item">
                                                     <i class="fas fa-pen"></i>&nbsp;
-                                                    <span class="text-muted" translate="commons.edit"></span>
+                                                    <span translate="commons.edit"></span>
                                                 </a>
                                             </li>
-                                            <div *ngIf="u.active">
+                                            <div *ngIf="u.active && !isYourAccount(u)">
                                                 <li>
                                                     <hr class="dropdown-divider">
                                                 </li>
-                                                <li>
+                                                <li class="link-spin" *ngIf="false">
                                                     <a class="dropdown-item">
                                                         <i class="fas fa-key"></i>&nbsp;
                                                         <span class="text-muted" translate="users.resetPassword"></span>
                                                     </a>
                                                 </li>
-                                                <li *ngIf="u.nonLocked">
-                                                    <a (click)="beforeLockUnLockUser(u)" class="dropdown-item link">
+                                                <li *ngIf="u.nonLocked" class="link-spin">
+                                                    <a (click)="beforeLockUnLockUser(u)" class="dropdown-item">
                                                         <i class="fas fa-user-lock text-primary"></i>&nbsp;<span
                                                             translate="users.lock"></span>
                                                     </a>
                                                 </li>
-                                                <li *ngIf="!u.nonLocked">
-                                                    <a (click)="beforeLockUnLockUser(u)" class="dropdown-item link">
+                                                <li *ngIf="!u.nonLocked" class="link-spin">
+                                                    <a (click)="beforeLockUnLockUser(u)" class="dropdown-item">
                                                         <i class="fas fa-user-check text-success"></i>&nbsp;<span
                                                             translate="users.unlock"></span>
                                                     </a>
                                                 </li>
-                                                <li><a (click)="beforeDisable(u)" class="dropdown-item link">
+                                                <li class="link-spin">
+                                                    <a (click)="beforeDisable(u)" class="dropdown-item">
                                                         <i class="fas fa-user-times text-danger"></i>&nbsp;<span
                                                             translate="commons.disable"></span>
                                                     </a>

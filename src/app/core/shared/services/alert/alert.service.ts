@@ -12,8 +12,7 @@ export class AlertService {
   success(title:string, msg: string, positionClass: ToastPosition): void {
     this.toast.success(msg, title, {
       positionClass: positionClass,
-      disableTimeOut: false,
-      progressBar: true
+      disableTimeOut: false
     });
    }
 
@@ -28,16 +27,14 @@ export class AlertService {
    warning(title:string, msg: string, positionClass: ToastPosition): void {
     this.toast.warning(msg, title, {
       positionClass: positionClass,
-      disableTimeOut: false,
-      progressBar: true
+      disableTimeOut: false
     });
    }
 
    info(title:string, msg: string, positionClass: ToastPosition): void {
     this.toast.info(msg, title, {
       positionClass: positionClass,
-      disableTimeOut: false,
-      progressBar: true
+      disableTimeOut: false
     });
    }
 }

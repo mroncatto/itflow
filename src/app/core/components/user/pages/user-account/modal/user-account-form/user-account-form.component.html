@@ -1,0 +1,38 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <h5 *ngIf="!user" class="modal-title" translate="modal.user.new"></h5>
+    <h5 *ngIf="user" class="modal-title" [translateParams]="{user: user.fullName}" translate="modal.user.update"></h5>
+  </div>
+  <form [formGroup]="userForm" (ngSubmit)="beforeSave()">
+    <div class="modal-body">
+      <div class="mb-3">
+        <label for="fullName" translate="users.fullname"></label>
+        <input autocomplete="off" type="text" formControlName="fullName" id="fullName" class="form-control"
+          placeholder="{{'users.fullname.placeholder' | translate}}">
+        <app-validation-field [form]="userForm" [field]="'fullName'"></app-validation-field>
+      </div>
+
+      <div class="mb-3">
+        <label for="email" translate="users.email"></label>
+        <input autocomplete="off" type="email" formControlName="email" id="email" class="form-control"
+          placeholder="{{'users.email.placeholder' | translate}}">
+        <app-validation-field [form]="userForm" [field]="'email'"></app-validation-field>
+      </div>
+
+      <div class="mb-3">
+        <label for="username" translate="users.username"></label>
+        <input autocomplete="off" type="text" formControlName="username" id="username" class="form-control"
+          placeholder="{{'users.username.placeholder' | translate}}">
+        <app-validation-field [form]="userForm" [field]="'username'"></app-validation-field>
+      </div>
+      <div class="form-check" title="{{'users.unlocked.placeholder' | translate}}">
+        <input class="form-check-input link" type="checkbox" formControlName="nonLocked" id="userNonLocked">
+        <label class="form-check-label link" for="userNonLocked" translate="users.unlocked"></label>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-danger" (click)="closeModal()" translate="commons.cancel"></button>
+      <button type="submit" class="btn btn-success" translate="commons.save"></button>
+    </div>
+  </form>
+</div>

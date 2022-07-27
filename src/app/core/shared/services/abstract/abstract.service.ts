@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable, Injector } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import { BsModalService } from 'ngx-bootstrap/modal';
 import { environment } from 'src/environments/environment';
 import { ToastPosition } from '../../commons/enum/toastPosition.enum';
 import { ToastType } from '../../commons/enum/toastType.enum';
@@ -18,6 +19,7 @@ export class AbstractService {
   protected router: Router;
   protected authService: AuthenticationService;
   protected http: HttpClient;
+  protected modalService: BsModalService;
   alertService: AlertService;
   formBuilder: FormBuilder;
   
@@ -26,6 +28,7 @@ export class AbstractService {
     this.alertService = injector.get(AlertService);
     this.translateService = injector.get(TranslateConfigService);
     this.router = injector.get(Router);
+    this.modalService = injector.get(BsModalService);
     this.authService = injector.get(AuthenticationService);
     this.http = injector.get(HttpClient);
     this.formBuilder = injector.get(FormBuilder);
@@ -55,7 +58,7 @@ export class AbstractService {
 
   // ------------------ Toast Alerts --------------------------------
   onSuccess(t: string, m: string): void {
-    this.showAlert(this.translate(`app.success.${t}`), `app.success.${m}`, ToastType.SUCCESS);
+    this.showAlert(this.translate(`app.success.${t}`), this.translate(`app.success.${m}`), ToastType.SUCCESS);
   }
 
   onInfo(t: string, m: string): void {

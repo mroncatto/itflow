@@ -7,12 +7,14 @@ import { SharedModule } from '../../shared/shared.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
+import { UserAccountFormComponent } from './pages/user-account/modal/user-account-form/user-account-form.component';
 
 
 @NgModule({
   declarations: [
     ProfileComponent,
-    UserAccountComponent
+    UserAccountComponent,
+    UserAccountFormComponent
   ],
   imports: [
     CommonModule,

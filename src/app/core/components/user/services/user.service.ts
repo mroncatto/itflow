@@ -1,8 +1,10 @@
 import { Injectable, Injector } from '@angular/core';
 import { AbstractControl, FormGroup, ValidationErrors, ValidatorFn } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { BsModalRef } from 'ngx-bootstrap/modal';
+import { Observable, Subject } from 'rxjs';
 import { AbstractService } from 'src/app/core/shared/services/abstract/abstract.service';
 import { IUser } from '../model/user';
+import { UserAccountFormComponent } from '../pages/user-account/modal/user-account-form/user-account-form.component';
 import { UserValidation } from '../validation/user-validation';
 
 @Injectable({
@@ -12,11 +14,23 @@ export class UserService extends AbstractService {
 
   constructor(injector: Injector) { super(injector) }
 
+  createUser(user: IUser): Observable<IUser> {
+    return this.http.post<IUser>(`${this.API_URL}/user`, user);
+  }
+
+  updateUser(user: IUser): Observable<IUser> {
+    return this.http.put<IUser>(`${this.API_URL}/user/${user.username}`, user);
+  }
+
+  getCurrentUser(): IUser | null {
+    return this.authService.getUserFromSessionStorage();
+  }
+
   getUserFromCache(): IUser {
     return this.authService.getUserFromSessionStorage() as IUser;
   }
 
-  getUsers(): Observable<IUser[]>{
+  getUsers(): Observable<IUser[]> {
     return this.http.get<IUser[]>(`${this.API_URL}/user`);
   }
 
@@ -32,7 +46,7 @@ export class UserService extends AbstractService {
     return this.http.put(`${this.API_URL}/user/lockunlock/${username}`, null);
   }
 
-  findUserByUsername(username: string): Observable<IUser>{
+  findUserByUsername(username: string): Observable<IUser> {
     return this.http.get<IUser>(`${this.API_URL}/user/${username}`);
   }
 
@@ -40,14 +54,27 @@ export class UserService extends AbstractService {
     return this.http.put(`${this.API_URL}/user/updatepassword`, form);
   }
 
-  updateProfile(user: IUser): Observable<IUser>{
+  updateProfile(user: IUser): Observable<IUser> {
     return this.http.put<IUser>(`${this.API_URL}/user/profile`, user);
   }
 
-
+  showCreateUser(): BsModalRef {
+    const modal: BsModalRef = this.modalService.show(UserAccountFormComponent, { backdrop: 'static' });
+    return modal;
+  }
 
 
   // ===================== FormGroups ======================
+  getUserForm(): FormGroup {
+    return this.formBuilder.group({
+      fullName: ['', UserValidation.fullName()],
+      email: ['', UserValidation.email()],
+      username: ['', UserValidation.username()],
+      active: [true],
+      nonLocked: [true]
+    })
+  }
+
   getProfileForm(user: IUser): FormGroup {
     return this.formBuilder.group({
       fullName: [user.fullName, UserValidation.fullName()],
@@ -55,7 +82,7 @@ export class UserService extends AbstractService {
     })
   }
 
-  getPasswordForm(): FormGroup{
+  getPasswordForm(): FormGroup {
     return this.formBuilder.group({
       oldPassword: ['', UserValidation.required()],
       newPassword: ['', UserValidation.password()],
@@ -63,7 +90,16 @@ export class UserService extends AbstractService {
     }, { validators: this.checkPasswords });
   }
 
+  onCreateUser(): Subject<IUser> {
+    const bsModalRef: BsModalRef = this.modalService.show(UserAccountFormComponent);
+    return (<UserAccountFormComponent>bsModalRef.content).userResult;
+  }
 
+  onUpdateUser(user: IUser): Subject<IUser> {
+    const bsModalRef: BsModalRef = this.modalService.show(UserAccountFormComponent);
+    bsModalRef.content.loadForm(user);
+    return (<UserAccountFormComponent>bsModalRef.content).userResult;
+  }
 
   private checkPasswords: ValidatorFn = (group: AbstractControl): ValidationErrors | null => {
     let pass = group.get('newPassword')?.value;

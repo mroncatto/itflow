@@ -5,13 +5,13 @@
         "placeholder.username": "Your username",
         "placeholder.password": "Your password"
     },
-    "profile":{
+    "profile": {
         "profile": "Profile",
         "joinDate": "Join Date: ",
         "lastLogin": "Last Login: ",
         "userInfo": "User info",
         "editProfile": "Edit Profile",
-        "fullname": "Full Name: ",
+        "fullname": "Full name: ",
         "username": "Username: ",
         "email": "Email:",
         "cancel": "Cancel",
@@ -19,11 +19,11 @@
         "saveProfile": "Save Profile",
         "updatePassword": "Update Password",
         "oldPassword": "Old Password: ",
-        "oldPasswordHolder": "Type your current password, minimum 6 characters",
+        "oldPassword.placeholder": "Enter your current password, minimum 6 characters",
         "password": "Password: ",
-        "passwordHolder": "Type your new password, minimum 6 characters",
+        "password.placeholder": "Enter your new password, minimum 6 characters",
         "repeatPassword": "Repeat password: ",
-        "repeatPasswordHolder": "Repeat your new password",
+        "repeatPassword.placeholder": "Repeat your new password",
         "changePassword": "Change Password"
     },
     "menu": {
@@ -48,12 +48,19 @@
     "users": {
         "users": "Users",
         "user": "User",
-        "fullname": "Full Name",
+        "fullname": "Full name",
+        "fullname.placeholder":"Enter the user's full name.",
         "username": "Username",
+        "username.placeholder": "Enter a valid username, without spaces or symbols.",
         "email": "Email",
+        "email.placeholder": "Enter a valid email",
         "lastLogin": "Last Login",
         "state": "State",
+        "active": "Active",
+        "active.placeholder": "It's an active account ?",
         "locked": "Locked",
+        "unlocked": "Unlocked",
+        "unlocked.placeholder": "It's an unlocked account ?",
         "resetPassword": "Reset Password",
         "lock": "Lock",
         "unlock": "Unlock"
@@ -74,7 +81,10 @@
             "USER NOT FOUND": "User not found",
             "BAD_REQUEST": "Bad Request",
             "ALL FIELDS ARE REQUIRED": "All fields are required",
-            "INVALID FORMAT EMAIL": "Invalid Email Format"
+            "INVALID FORMAT EMAIL": "Invalid Email Format",
+            "USER ALREADY EXISTS WITH THIS EMAIL": "User already exists with this email",
+            "USER ALREADY EXISTS WITH THIS USERNAME": "User already exists with this username",
+            "THE USERNAME FIELD IS REQUIRED": "The username field is required"
         }
     },
     "app": {
@@ -85,21 +95,23 @@
         "success": {
             "created": "Successfully created",
             "updated": "Successfully changed",
-            "deleted": "Successfully deleted"
+            "deleted": "Successfully deleted",
+            "userCreated": "The account was created, the login data was sent to the user's email",
+            "userUpdated": "The account was updated"
         },
         "info": {
             "welcome": "Welcome",
             "authenticated": "Successfully Authenticated",
             "passwordChanged": "Password was changed",
             "profileChanged": "Profile was changed",
-            "userDisabled":"The user account was disabled!",
+            "userDisabled": "The user account was disabled!",
             "successfully": "Successfully",
             "created": "Successfully created",
             "updated": "Successfully changed",
             "deleted": "Successfully deleted",
             "disabled": "Successfully disabled",
             "userBlocked": "The account has been locked",
-            "userUnBlocked":"The account has been unlocked",
+            "userUnBlocked": "The account has been unlocked",
             "passwordReseted": "A new password has been generated and sent to the user's mail."
         }
     },
@@ -114,17 +126,18 @@
         "max": "Maximum allowed value is {{n}}",
         "invalidField": "Invalid field"
     },
-    "commons":{
+    "commons": {
         "open": "Open",
         "edit": "Edit",
         "delete": "Delete",
         "active": "Active",
         "inactive": "Inactive",
-        "disable":"Disable",
+        "disable": "Disable",
         "cancel": "Cancel",
         "yes": "Yes",
         "no": "No",
-        "actions": "Actions"
+        "actions": "Actions",
+        "save": "Save"
     },
     "modal": {
         "warning": "Warning",
@@ -132,7 +145,9 @@
         "user": {
             "disable": "Are you sure you want to disable the {{user}} user account?? This change cannot be reversed.",
             "lock": "Are you sure you want to lock the {{user}} account?",
-            "resetPassword": "Are you sure you want to set the user's password?"
+            "resetPassword": "Are you sure you want to set the user's password?",
+            "new": "New User",
+            "update": "Update user {{user}}"
         }
     }
 }
