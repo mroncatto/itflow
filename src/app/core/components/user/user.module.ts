@@ -8,13 +8,15 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { UserAccountFormComponent } from './pages/user-account/modal/user-account-form/user-account-form.component';
+import { UserAccountShowComponent } from './pages/user-account/modal/user-account-show/user-account-show.component';
 
 
 @NgModule({
   declarations: [
     ProfileComponent,
     UserAccountComponent,
-    UserAccountFormComponent
+    UserAccountFormComponent,
+    UserAccountShowComponent
   ],
   imports: [
     CommonModule,

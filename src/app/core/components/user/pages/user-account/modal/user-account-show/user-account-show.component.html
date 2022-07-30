@@ -1,0 +1,45 @@
+<div class="modal-content">
+    <div class="modal-body" *ngIf="user; else loading">
+        <div class="user-img">
+            <img width="125" [src]="'https://robohash.org/' + user.username + '?size=125x125'"
+                class="img-thumbnail rounded-circle img-avatar" alt="User Avatar">
+        </div>
+        <div class="user-desc flex-center mb-3">
+            <h6 class="fw-bold">{{user.fullName}}</h6>
+            <span>{{user.email}}</span>
+            <span [title]="'users.lastLogin' | translate">
+                <i class="fas fa-user-clock mx-1"></i>
+                <span>{{user.lastLoginDate | date}}</span>
+                <span class="text-muted" *ngIf="!user.lastLoginDate" translate="users.neverLogged"></span>
+            </span>
+        </div>
+        <div class="user-assign-role">
+            <div class="d-flex gap-2">
+                <select class="form-control">
+                    <option value="">Roles...</option>
+                    <option value="1">ADMIN</option>
+                    <option value="2">MANAGER</option>
+                    <option value="3">DEVOPS</option>
+                </select>
+                <button class="btn btn-success btn-sm">Agregar</button>
+            </div>
+        </div>
+        <div class="user-roles mt-1">
+            <ul class="list-group">
+                <li class="list-group-item active text-center"><i class="fas fa-user-tag"></i> Roles</li>
+                <li class="list-group-item text-muted" *ngIf="user.role.length === 0">No roles assigned</li>
+                <li class="list-group-item flex-between link-spin" *ngFor="let rol of user.role">
+                    <span class="badge bg-info">{{rol.role}}</span>
+                    <i [title]="'commons.remove' | translate" class="fas fa-trash text-danger"></i>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <ng-template #loading>
+        loading...
+    </ng-template>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" (click)="closeModal()"
+            translate="commons.close"></button>
+    </div>
+</div>

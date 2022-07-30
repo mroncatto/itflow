@@ -63,7 +63,9 @@
         "unlocked.placeholder": "It's an unlocked account ?",
         "resetPassword": "Reset Password",
         "lock": "Lock",
-        "unlock": "Unlock"
+        "unlock": "Unlock",
+        "selectRole": "Select a role",
+        "neverLogged": "Never logged in"
     },
     "api": {
         "error": {
@@ -134,10 +136,12 @@
         "inactive": "Inactive",
         "disable": "Disable",
         "cancel": "Cancel",
+        "remove": "Remove",
         "yes": "Yes",
         "no": "No",
         "actions": "Actions",
-        "save": "Save"
+        "save": "Save",
+        "close": "Close"
     },
     "modal": {
         "warning": "Warning",

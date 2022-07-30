@@ -1,0 +1,9 @@
+.user-img {
+    position: absolute;
+    top: -70px;
+    left: calc(50% - 62.5px);
+}
+
+.user-desc {
+    padding-top: 50px;
+}

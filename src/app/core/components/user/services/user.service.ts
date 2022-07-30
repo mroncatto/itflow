@@ -5,6 +5,7 @@ import { Observable, Subject } from 'rxjs';
 import { AbstractService } from 'src/app/core/shared/services/abstract/abstract.service';
 import { IUser } from '../model/user';
 import { UserAccountFormComponent } from '../pages/user-account/modal/user-account-form/user-account-form.component';
+import { UserAccountShowComponent } from '../pages/user-account/modal/user-account-show/user-account-show.component';
 import { UserValidation } from '../validation/user-validation';
 
 @Injectable({
@@ -90,6 +91,15 @@ export class UserService extends AbstractService {
     }, { validators: this.checkPasswords });
   }
 
+  private checkPasswords: ValidatorFn = (group: AbstractControl): ValidationErrors | null => {
+    let pass = group.get('newPassword')?.value;
+    let confirmPass = group.get('repeatpassword')?.value
+    return pass === confirmPass ? null : { notSame: true }
+  }
+
+
+  // ===================== FormGroups ======================
+
   onCreateUser(): Subject<IUser> {
     const bsModalRef: BsModalRef = this.modalService.show(UserAccountFormComponent);
     return (<UserAccountFormComponent>bsModalRef.content).userResult;
@@ -101,10 +111,11 @@ export class UserService extends AbstractService {
     return (<UserAccountFormComponent>bsModalRef.content).userResult;
   }
 
-  private checkPasswords: ValidatorFn = (group: AbstractControl): ValidationErrors | null => {
-    let pass = group.get('newPassword')?.value;
-    let confirmPass = group.get('repeatpassword')?.value
-    return pass === confirmPass ? null : { notSame: true }
+  onShowUser(user: IUser): void {
+    const bsModalRef: BsModalRef = this.modalService.show(UserAccountShowComponent, {
+      class: 'modal-dialog-centered'
+    });
+    bsModalRef.content.loadUser(user);
   }
 
 }

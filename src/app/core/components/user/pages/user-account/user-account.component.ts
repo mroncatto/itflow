@@ -3,7 +3,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { EMPTY, Subscription, switchMap, take } from 'rxjs';
 import { ModalService } from 'src/app/core/shared/services/modal/modal.service';
-import { IUser, User } from '../../model/user';
+import { IUser } from '../../model/user';
 import { UserService } from '../../services/user.service';
 
 @Component({
@@ -46,6 +46,13 @@ export class UserAccountComponent implements OnInit, OnDestroy {
     })
   }
 
+  // ============================= SHOW USER ============================
+  onShowUser(user: IUser): void {
+    this.userService.onShowUser(user);
+  }
+
+  
+
   // ============================= CREATE USER ============================
   onCreateUser(): void {
     this.sub.push(
@@ -78,7 +85,7 @@ export class UserAccountComponent implements OnInit, OnDestroy {
 
   private afterUpdateUser(user: IUser): void {
     this.users.forEach(u => {
-      if (u.username === user.username) u = user
+      if (u.username === user.username) Object.assign(u, user);
     });
   }
 

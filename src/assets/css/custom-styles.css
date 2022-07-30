@@ -220,6 +220,11 @@ body {
   align-items: center !important;
   justify-content: space-between;
 }
+.flex-center {
+  display: flex !important;
+  align-items: center !important;
+  flex-direction: column !important;
+}
 .flex-end {
   display: flex;
   justify-content: end;
@@ -258,6 +263,10 @@ body {
   color: var(--normal-text) !important;
 }
 .modal-content {
+  background-color: var(--first-color) !important;
+  color: var(--normal-text) !important;
+}
+.list-group-item:not(.active) {
   background-color: var(--first-color) !important;
   color: var(--normal-text) !important;
 }
