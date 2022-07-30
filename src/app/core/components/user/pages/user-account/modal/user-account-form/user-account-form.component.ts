@@ -17,6 +17,8 @@ export class UserAccountFormComponent implements OnInit {
   user!: IUser;
   userResult!: Subject<IUser>;
   userForm!: FormGroup;
+  loading: boolean = false;
+
   private sub: Subscription[] = [];
 
   constructor(
@@ -47,6 +49,7 @@ export class UserAccountFormComponent implements OnInit {
 
   beforeSave(): void {
     if (this.userForm.valid) {
+      this.loading = true;
       if (this.user && this.user.username) {
         this.sub.push(
           this.userService.updateUser(this.userForm.getRawValue()).subscribe({
@@ -81,6 +84,7 @@ export class UserAccountFormComponent implements OnInit {
   }
 
   onFail(err: HttpErrorResponse): void {
+    this.loading = false;
     this.userService.onFail(err)
   }
 

@@ -14,6 +14,8 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   authentication!: IAuthResponse;
   private redirect!: string;
+  loading: boolean = false;
+
   constructor(
     private loginService: LoginService,
     private activatedRouter: ActivatedRoute
@@ -26,11 +28,13 @@ export class LoginComponent implements OnInit {
 
   onLogin(): void {
     if (this.loginForm.valid) {
+      this.loading = true;
       this.loginService.login(this.loginService.createDataForm(this.loginForm.value)).subscribe({
         next: (data) => this.authentication = data,
         error: (err) => {
-          this.loginService.onFail(err),
-            this.loginForm.reset()
+          this.loginService.onFail(err);
+          this.loading = false;
+          this.loginForm.reset();
         },
         complete: () => this.onAuthenticate(),
       })

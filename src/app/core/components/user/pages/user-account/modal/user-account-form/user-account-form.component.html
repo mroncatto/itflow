@@ -31,8 +31,10 @@
       </div>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-outline-danger" (click)="closeModal()" translate="commons.cancel"></button>
-      <button type="submit" class="btn btn-success" translate="commons.save"></button>
+      <button [disabled]="loading" type="button" class="btn btn-outline-danger" (click)="closeModal()" translate="commons.cancel"></button>
+      <button [disabled]="loading" type="submit" class="btn btn-success" translate="commons.save">
+        <i *ngIf="loading" class="fas fa-spinner fa-pulse mx-1"></i>
+      </button>
     </div>
   </form>
 </div>

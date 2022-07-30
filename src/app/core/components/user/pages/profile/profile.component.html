@@ -101,7 +101,9 @@
                                             </div>
                                         </div>
                                         <div class="col-md-12 flex-end">
-                                            <button type="submit" [disabled]="userForm.invalid || loadingMode" class="btn btn-success"><i class="fas fa-save"></i>
+                                            <button type="submit" [disabled]="userForm.invalid || loadingMode" class="btn btn-success">
+                                            <i *ngIf="!loadingMode" class="fas fa-save"></i>
+                                            <i *ngIf="loadingMode" class="fas fa-spinner fa-pulse"></i>
                                             <span class="mx-1" translate="profile.saveProfile"></span>
                                             </button>
                                         </div>
@@ -138,7 +140,9 @@
                                             </div>
                                         </div>
                                         <div class="flex-end">
-                                            <button type="submit" [disabled]="loadingMode" class="btn btn-warning"><i class="fas fa-key"></i>
+                                            <button type="submit" [disabled]="loadingMode" class="btn btn-warning">
+                                            <i *ngIf="!loadingMode" class="fas fa-key"></i>
+                                            <i *ngIf="loadingMode" class="fas fa-spinner fa-pulse"></i>
                                             <span class="mx-1" translate="profile.changePassword"></span>
                                             </button>
                                         </div>
